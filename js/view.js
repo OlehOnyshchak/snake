@@ -46,5 +46,10 @@ var canvas_rect = canvas.getBoundingClientRect();
 var controller = new Controller(new Rect(
     canvas_rect.left, canvas_rect.top, canvas_rect.right, canvas_rect.bottom));
 
+// TODO: query interval from controller
+window.setInterval(function() {
+    controller.performUpdate();
+}, 100);
+
 document.addEventListener("keydown", OnKeyDown);
 window.requestAnimationFrame(draw);

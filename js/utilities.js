@@ -30,6 +30,10 @@ class Brick {
     getRect() {
         return this.rect;
     }
+
+    getOffset() {
+        return this.offset;
+    }
 }
 
 // TODO: check whether it conveniate to have class UiBrick extends Brick.

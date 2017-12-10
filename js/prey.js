@@ -6,4 +6,8 @@ class Prey {
     getDataModel() {
         return [];
     }
+
+    performUpdate() {
+        
+    }
 }
