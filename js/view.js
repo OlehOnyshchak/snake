@@ -1,5 +1,3 @@
-var controller = new Controller();
-
 var OnKeyDown = function(event) {
     switch (event.key) {
         case "ArrowRight":
@@ -26,4 +24,9 @@ var GetCanvas = function() {
     return document.getElementById("canvas");
 };
 
+var canvas = GetCanvas();
+var canvasRect = canvas.getBoundingClientRect();
+var controller = new Controller(new Rect(
+    canvasRect.left, canvasRect.top, canvasRect.right, canvasRect.bottom));
+    
 document.addEventListener("keydown", OnKeyDown);

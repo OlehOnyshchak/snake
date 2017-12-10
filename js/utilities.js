@@ -14,3 +14,7 @@ var Direction = {
     "Right" : "Right",
     "Down"  : "Down"
 };
+
+var DeepCopy = function(obj) {
+    return JSON.parse(JSON.stringify(obj));
+};
