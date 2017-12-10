@@ -1,5 +1,5 @@
 class Snake {
-    constructor(boardRect) {
-        this.boardRect = DeepCopy(boardRect);
+    constructor(board_rect) {
+        this.board_rect = DeepCopy(board_rect);
     }
 }

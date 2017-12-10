@@ -1,13 +1,13 @@
 class Controller {
-    constructor(boardRect) {
-        this.boardRect = DeepCopy(boardRect);
-        this.snake = new Snake(boardRect);
-        this.prey = new Prey(boardRect);
+    constructor(board_rect) {
+        this.board_rect = DeepCopy(board_rect);
+        this.snake = new Snake(board_rect);
+        this.prey = new Prey(board_rect);
         this.direction = Direction.None;
     }
 
-    changeDirection(newDirection) {
-        this.direction = newDirection;
+    changeDirection(new_direction) {
+        this.direction = new_direction;
         console.log(this.direction);
     }
 }

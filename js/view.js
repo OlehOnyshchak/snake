@@ -25,8 +25,8 @@ var GetCanvas = function() {
 };
 
 var canvas = GetCanvas();
-var canvasRect = canvas.getBoundingClientRect();
+var canvas_rect = canvas.getBoundingClientRect();
 var controller = new Controller(new Rect(
-    canvasRect.left, canvasRect.top, canvasRect.right, canvasRect.bottom));
-    
+    canvas_rect.left, canvas_rect.top, canvas_rect.right, canvas_rect.bottom));
+
 document.addEventListener("keydown", OnKeyDown);
