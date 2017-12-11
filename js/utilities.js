@@ -14,12 +14,29 @@ class Rect {
     getHeight() {
         return this.bottom - this.top;
     }
+
+    isOverlapped(rect) {
+        var is_horizontal_overlapping = (this.left <= rect.right && this.left >= rect.left) ||
+                                        (this.right <= rect.right && this.right >= rect.left);
+        var is_vertical_overlapping = (this.top <= rect.bottom && this.top >= rect.top) ||
+                                        (this.bottom <= rect.bottom && this.bottom >= rect.top);
+        
+        return is_horizontal_overlapping && is_vertical_overlapping;
+    }
 }
 
 const brick_offset = 15;
 var getBrickOffset = function() {
     return brick_offset;
-}
+};
+
+var getGridDimention = function(real_rect, cell_dimention) {
+    var grid_dimention = {};
+    grid_dimention.x = Math.floor(real_rect.getWidth() / cell_dimention);
+    grid_dimention.y = Math.floor(real_rect.getHeight() / cell_dimention);
+
+    return grid_dimention;
+};
 
 // The smallest differentiated element during
 // construction of any UI element 

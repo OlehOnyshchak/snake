@@ -2,7 +2,7 @@ class Controller {
     constructor(board_rect) {
         this.board_rect = Object.assign(board_rect);
         this.snake = new Snake(board_rect);
-        this.prey = new Prey(board_rect);
+        this.prey = new Prey(board_rect, this.snake.getLocation());
     }
 
     changeDirection(new_direction) {
@@ -18,7 +18,9 @@ class Controller {
     }
 
     performUpdate() {
-        this.prey.performUpdate();
-        this.snake.performUpdate();
+        this.snake.move();
+        if (this.snake.hasSwallowed(this.prey.getLocation())) {
+            this.prey.placeOnBoard(this.snake.getLocation());
+        }
     }
 }

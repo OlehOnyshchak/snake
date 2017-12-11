@@ -5,11 +5,10 @@ class Snake {
 
         var offset = getBrickOffset();
         var head = {};
-        var horizontal_squares = Math.floor(board_rect.getWidth() / offset);
-        head.left = board_rect.left + Math.floor(horizontal_squares / 2) * offset;
-       
-        var vertical_squares = Math.floor(board_rect.getHeight() / offset);
-        head.top = board_rect.top + Math.floor(vertical_squares / 2) * offset;
+        
+        var grid_dimention = getGridDimention(board_rect, offset);
+        head.left = board_rect.left + Math.floor(grid_dimention.x / 2) * offset;
+        head.top = board_rect.top + Math.floor(grid_dimention.y / 2) * offset;
 
         this.body = [new Brick(head.left, head.top), new Brick(head.left + offset, head.top)];
     }
@@ -39,7 +38,7 @@ class Snake {
         return bricks;
     }
 
-    performUpdate() {
+    move() {
         var head = this.body[0].getRect();
         var offset = getBrickOffset();
         var new_head = {};
@@ -73,5 +72,28 @@ class Snake {
         
         this.body.pop();
         this.body.unshift(new Brick(new_head.left, new_head.top));
+    }
+
+    hasSwallowed(prey_rect) {
+        var has_swallowed = false;
+        for (var i = 0; i < this.body.length; ++i) {
+            var body_rect = this.body[i].getRect();
+            if (body_rect.isOverlapped(prey_rect)) {
+                has_swallowed = true;
+                break;
+            }
+        }
+
+        return has_swallowed;
+    }
+
+    getLocation() {
+        var rect_colletion = [];
+        this.body.forEach(function(item) {
+            // TODO: do we need to use `new` here?
+            rect_colletion.push(item);
+        });
+
+        return rect_colletion;
     }
 }
