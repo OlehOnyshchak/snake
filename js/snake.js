@@ -88,11 +88,20 @@ class Snake {
         }
     }
 
+    hasSwallowedItself() {
+        var head_rect = this.body[0].getRect();
+        return this._hasSwallowed(head_rect, 1);
+    }
+
     hasSwallowed(prey_rect) {
+        return this._hasSwallowed(prey_rect, 0);
+    }
+
+    _hasSwallowed(rect, start_index) {
         var has_swallowed = false;
-        for (var i = 0; i < this.body.length; ++i) {
+        for (var i = start_index; i < this.body.length; ++i) {
             var body_rect = this.body[i].getRect();
-            if (body_rect.isOverlapped(prey_rect)) {
+            if (body_rect.isOverlapped(rect)) {
                 has_swallowed = true;
                 break;
             }

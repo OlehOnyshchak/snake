@@ -25,6 +25,11 @@ var GetCanvas = function() {
 };
 
 var draw = function() {
+    if (controller.isGameOver()) {
+        alert("Game Over!");
+        controller.startNewGame();
+    }
+
     var ctx = canvas.getContext("2d");
     if (ctx) {
         ctx.clearRect(canvas_rect.left, canvas_rect.top,

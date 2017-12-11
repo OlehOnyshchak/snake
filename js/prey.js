@@ -14,6 +14,7 @@ class Prey {
     }
 
     placeOnBoard(snake_rect) {
+        // TODO: fix bug with some offset of prey comparing with snake location
         var offset = getBrickOffset();
         var grid_dimention = getGridDimention(this.board_rect, offset);
         var available_location = false;

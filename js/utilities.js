@@ -16,12 +16,15 @@ class Rect {
     }
 
     isOverlapped(rect) {
-        var is_horizontal_overlapping = (this.left <= rect.right && this.left >= rect.left) ||
-                                        (this.right <= rect.right && this.right >= rect.left);
-        var is_vertical_overlapping = (this.top <= rect.bottom && this.top >= rect.top) ||
-                                        (this.bottom <= rect.bottom && this.bottom >= rect.top);
+        var absolute_match = this.left == rect.left && this.right == rect.right &&
+                                          this.top == this.top && this.bottom == rect.bottom;
+
+        var is_horizontal_overlapping = (this.left < rect.right && this.left > rect.left) ||
+                                        (this.right < rect.right && this.right > rect.left);
+        var is_vertical_overlapping = (this.top < rect.bottom && this.top > rect.top) ||
+                                        (this.bottom < rect.bottom && this.bottom > rect.top);
         
-        return is_horizontal_overlapping && is_vertical_overlapping;
+        return absolute_match || (is_horizontal_overlapping && is_vertical_overlapping);
     }
 }
 
