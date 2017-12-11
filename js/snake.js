@@ -2,12 +2,15 @@ class Snake {
     constructor(board_rect) {
         this.board_rect = Object.assign(board_rect);
         this.direction = Direction.None;
-        
-        var head = {};
-        head.left = board_rect.getWidth() / 2;
-        head.top = board_rect.getHeight() / 2;
 
         var offset = getBrickOffset();
+        var head = {};
+        var horizontal_squares = Math.floor(board_rect.getWidth() / offset);
+        head.left = board_rect.left + Math.floor(horizontal_squares / 2) * offset;
+       
+        var vertical_squares = Math.floor(board_rect.getHeight() / offset);
+        head.top = board_rect.top + Math.floor(vertical_squares / 2) * offset;
+
         this.body = [new Brick(head.left, head.top), new Brick(head.left + offset, head.top)];
     }
 
@@ -38,7 +41,7 @@ class Snake {
 
     performUpdate() {
         var head = this.body[0].getRect();
-        var offset = this.body[0].getOffset();
+        var offset = getBrickOffset();
         var new_head = {};
         switch(this.direction) {
             case Direction.Down:

@@ -41,7 +41,15 @@ var draw = function() {
     window.requestAnimationFrame(draw);
 };
 
+const width = 20;
+const height = 20;
 var canvas = GetCanvas();
+var offset = getBrickOffset();
+// TODO: fix bug with incorrect canvas size.
+// it should be precisly divisible by offset
+canvas.width = width * offset;
+canvas.height = height * offset;
+
 var canvas_rect = canvas.getBoundingClientRect();
 var controller = new Controller(new Rect(
     canvas_rect.left, canvas_rect.top, canvas_rect.right, canvas_rect.bottom));
