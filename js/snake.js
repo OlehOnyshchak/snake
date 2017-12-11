@@ -7,10 +7,8 @@ class Snake {
         head.left = board_rect.getWidth() / 2;
         head.top = board_rect.getHeight() / 2;
 
-        var head_brick = new Brick(head.left, head.top);
-        // TODO: is there some kind of static member data field?
-        var offset = head_brick.getOffset();
-        this.body = [head_brick, new Brick(head.left + offset, head.top)];
+        var offset = getBrickOffset();
+        this.body = [new Brick(head.left, head.top), new Brick(head.left + offset, head.top)];
     }
 
     setDirection(new_direction) {

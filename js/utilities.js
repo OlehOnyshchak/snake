@@ -16,11 +16,16 @@ class Rect {
     }
 }
 
+const brick_offset = 15;
+var getBrickOffset = function() {
+    return brick_offset;
+}
+
 // The smallest differentiated element during
 // construction of any UI element 
 class Brick {
     constructor(left, top) {
-        this.offset = 15;
+        this.offset = getBrickOffset();
 
         var right = left + this.offset;
         var bottom = top + this.offset;
@@ -29,10 +34,6 @@ class Brick {
 
     getRect() {
         return this.rect;
-    }
-
-    getOffset() {
-        return this.offset;
     }
 }
 
