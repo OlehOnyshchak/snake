@@ -55,9 +55,11 @@ var offset = getBrickOffset();
 canvas.width = width * offset;
 canvas.height = height * offset;
 
+var border_width = parseInt(canvas.style.borderWidth);
 var canvas_rect = canvas.getBoundingClientRect();
 var controller = new Controller(new Rect(
-    canvas_rect.left, canvas_rect.top, canvas_rect.right, canvas_rect.bottom));
+        canvas_rect.left + border_width, canvas_rect.top + border_width,
+        canvas_rect.right - border_width, canvas_rect.bottom - border_width));
 
 // TODO: query interval from controller
 window.setInterval(function() {
