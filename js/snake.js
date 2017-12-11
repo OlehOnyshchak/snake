@@ -38,7 +38,7 @@ class Snake {
         return bricks;
     }
 
-    move() {
+    _getNewHead() {
         var head = this.body[0].getRect();
         var offset = getBrickOffset();
         var new_head = {};
@@ -69,9 +69,23 @@ class Snake {
                 // snake is static
                 return;
         }
-        
-        this.body.pop();
-        this.body.unshift(new Brick(new_head.left, new_head.top));
+
+        return new Brick(new_head.left, new_head.top);
+    }
+
+    move() {
+        if (this.direction !== Direction.None) {
+            this.body.pop();
+            var new_head = this._getNewHead();
+            this.body.unshift(new_head);
+        }
+    }
+
+    growUp() {
+        if (this.direction !== Direction.None) {
+            var new_head = this._getNewHead();
+            this.body.unshift(new_head);
+        }
     }
 
     hasSwallowed(prey_rect) {

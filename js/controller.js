@@ -20,6 +20,7 @@ class Controller {
     performUpdate() {
         this.snake.move();
         if (this.snake.hasSwallowed(this.prey.getLocation())) {
+            this.snake.growUp();
             this.prey.placeOnBoard(this.snake.getLocation());
         }
     }
