@@ -1,0 +1,8 @@
+name: 'app'
+type: "nodejs:10"
+disk: 2048
+web:
+    locations:
+        '/':
+            root: 'web'
+            index: 'index.html'
