@@ -32,8 +32,7 @@ var draw = function() {
 
     var ctx = canvas.getContext("2d");
     if (ctx) {
-        ctx.clearRect(canvas_rect.left, canvas_rect.top,
-                      canvas_rect.width, canvas_rect.height);
+        ctx.clearRect(0, 0, canvas_rect.width, canvas_rect.height);
 
         var ui_bricks = controller.getDataModel();
         ui_bricks.forEach(function(item) {
@@ -68,3 +67,4 @@ window.setInterval(function() {
 
 document.addEventListener("keydown", OnKeyDown);
 window.requestAnimationFrame(draw);
+OnKeyDown({key:"ArrowLeft"});
